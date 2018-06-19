@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html manifest="">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
+
+    <title>testApp</title>
+
+    <script type="text/javascript">
+        var Ext = Ext || {}; // Ext namespace won't be defined yet...
+
+        // This function is called by the Microloader after it has performed basic
+        // device detection. The results are provided in the "tags" object. You can
+        // use these tags here or even add custom tags. These can be used by platform
+        // filters in your manifest or by platformConfig expressions in your app.
+        //
+        Ext.beforeLoad = function (tags) {
+            Ext.manifest = 'classic'; // this name must match a build profile name
+            
+        };
+
+        function setupLocalStorage() {
+
+            const storageData = {
+                'userstorage-1': '{"name":"Joe Doe","startDate":"2018-06-13 00:00:00","endDate":"2018-06-19 00:00:00","status":"STOPPED"}',
+                'userstorage-2': '{"name":"Manager","startDate":"2018-06-17 00:00:00","endDate":"2018-06-29 00:00:00","status":"STOPPED"}',
+                'userstorage-3': '{"name":"Alisa","startDate":"2018-06-03 00:00:00","endDate":"2018-06-30 00:00:00","status":"RUNNING"}',
+                'userstorage-4': '{"name":"Iron Man","startDate":"2018-06-18 00:00:00","endDate":"2024-01-05 00:00:00","status":"RUNNING"}',
+                'userstorage': '1,2,3,4'
+            };
+
+            for(var key in storageData) {
+                window.localStorage.setItem(key, storageData[key]);
+            }
+        }
+    </script>
+
+    <!-- The line below must be kept intact for Sencha Cmd to build your application -->
+    <script id="microloader" data-app="4537039c-8094-4ab3-af97-d0bd8db480ee" type="text/javascript" src="bootstrap.js"></script>
+
+</head>
+<body></body>
+</html>
